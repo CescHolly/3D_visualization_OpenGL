@@ -1,4 +1,4 @@
-# 3D_visualization_OpenGL
+# 3D_visualization_OpenGL_Qt
 Part of IDI subject of FIB at UPC.
 
 Change the path of "m.load("path");" in file "MyGLWidget.cpp" to import any .obj file which will be able to visualize on top of a surface.
