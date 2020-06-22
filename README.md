@@ -34,11 +34,13 @@ If you want to see other 3D models or import your own click on the button "Open 
 UI elements:
   1. Camera projection: (Perspective/Orthogonal).
   2. Camera movement:
+
     2.1 X-axis can be enabled or disabled when rotating the scene, the button next to it with the "camera" symbol centers the camera to the X-axis.
     2.2 Y-axis can be enabled or disabled when rotating the scene, the button next to it with the "camera" symbol centers the camera to the Y-axis.
     2.3 As the Z-axis is not modified when rotating the scene you can do so with a slider, the button next to it with the "camera" symbol centers the camera to the Z-axis.
-   3. Light focus color: Three sliders specify the R, G, B values of the color of the light source.
-   4. Shader FX: 
+  3. Light focus color: Three sliders specify the R, G, B values of the color of the light source.
+  4. Shader FX:
+  
     4.1 Three check-boxes specify which layers of color should be ignored or painted after processing the image (to show the three components separately).
     4.2 The grey scale slider specifies the percentage of saturation and produces the following effect:
     
