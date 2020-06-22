@@ -16,6 +16,7 @@ Usage:
     If you are using a different Linux distribution or Windows there should be equivalent packages.
     
   2. Once everything is installed correctly follow the next steps to start the program:
+  
     Open the command line in the 3D_visualiztion_OpenGL_Qt directory and type:
       cd Programa
       qmake-qt5
