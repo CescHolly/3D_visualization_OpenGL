@@ -62,13 +62,21 @@ The only features that are not shown in the UI and you can use are:
 There are also some keyboard shortcuts to some features shown in the UI, here listed:
 
   'P' -> Swaps between the perspective and the orthogonal projection.
+  
   'D' -> Sets the background color to a dark blue.
+  
   'L' -> Sets the background color to a light blue.
+  
   'X' -> Centers the camera position to the +X axis of the model.
+  
   'Y' -> Centers the camera position to the +Y axis of the model.
+  
   'Z' -> Centers the camera position to the +Z axis of the model.
+  
   'R' -> Turns on or off the rendering of the red color component.
+  
   'G' -> Turns on or off the rendering of the green color component.
+  
   'B' -> Turns on or off the rendering of the blue color component.
 
 
