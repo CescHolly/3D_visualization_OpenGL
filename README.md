@@ -60,6 +60,7 @@ The only features that are not shown in the UI and you can use are:
   2. Rotate the light source around the scene with mouse right-click and drag.
   
 There are also some keyboard shortcuts to some features shown in the UI, here listed:
+
   'P' -> Swaps between the perspective and the orthogonal projection.
   'D' -> Sets the background color to a dark blue.
   'L' -> Sets the background color to a light blue.
