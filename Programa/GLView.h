@@ -38,6 +38,10 @@ class GLView : public QOpenGLWidget, protected QOpenGLFunctions_3_3_Core
         void setGreenLight(int value);
         void setBlueLight(int value);
         
+        void setDarkBackground();
+        void setLightBackground();
+        void setShowFloor(bool b);
+        
         void setRedComp(bool b);
         void setGreenComp(bool b);
         void setBlueComp(bool b);
@@ -48,6 +52,15 @@ class GLView : public QOpenGLWidget, protected QOpenGLFunctions_3_3_Core
     signals:
         
         void setZslider(int value);
+        
+        void togglePerspective();
+        void toggleOrtho();
+        void toggleDarkBack();
+        void toggleLightBack();
+        void signalShowFloor(bool b);
+        void signalRedComp(bool b);
+        void signalGreenComp(bool b);
+        void signalBlueComp(bool b);
 
     protected:
         // initializeGL - Aqui incluim les inicialitzacions del contexte grafic.
@@ -67,18 +80,18 @@ class GLView : public QOpenGLWidget, protected QOpenGLFunctions_3_3_Core
 
     private:
         
-        void creaBuffersModel(Model &model, const char *fileName, GLuint *VAO, float &escala, glm::vec3 &centreBase);
-        void creaBuffersPatricio();
+        void creaBuffersModel(Model &model, const char *fileName, GLuint *VAO, float &escala, glm::vec3 &centreBase, glm::vec3 &scaledSizes);
+        void creaBuffersFocus();
         void creaBuffersTerra ();
         void carregaShaders ();
-        void calculaCapsaModel (Model &m, float &escala, glm::vec3 &centreBase);
+        void calculaCapsaModel (Model &m, float &escala, glm::vec3 &centreBase, glm::vec3 &scaledSizes);
         
         void iniEscena ();
         void iniCamera ();
         void projectTransform ();
         void viewTransform ();
         void modelTransformTerra ();
-        void modelTransformPatricio ();
+        void modelTransformFocus ();
         void modelTransformModel ();
         
         void actualitzaColorLlum();
@@ -89,15 +102,15 @@ class GLView : public QOpenGLWidget, protected QOpenGLFunctions_3_3_Core
         QOpenGLShaderProgram *program;
         
         // VAO names
-        GLuint VAO_Pat, VAO_Model, VAO_Terra;
+        GLuint VAO_Focus, VAO_Model, VAO_Terra;
         bool recursiveSelectFile;
 
         // model
-        Model patModel;
+        Model focusModel;
         Model modModel;
         // paràmetres calculats a partir de la capsa contenidora del model
-        glm::vec3 centreBasePat, centreBaseModel;
-        float escalaPat, escalaModel;
+        glm::vec3 centreBaseFocus, midesFocus, centreBaseModel, midesModel;
+        float escalaFocus, escalaModel;
 
         // uniform locations
         GLuint transLoc, projLoc, viewLoc, colFocusLoc, llumAmbLoc, posFocusLoc, normalMatLoc, compLoc, greyCoefLoc;
@@ -120,9 +133,11 @@ class GLView : public QOpenGLWidget, protected QOpenGLFunctions_3_3_Core
         
         bool redComp, greenComp, blueComp;
         float greyScaleComp;
+        
+        bool showFloor;
 
         // matrius
-        glm::mat4 View;
+        glm::mat4 View, llumTG;
 
         // attribute locations
         GLuint vertexLoc, normalLoc, matambLoc, matdiffLoc, matspecLoc, matshinLoc;

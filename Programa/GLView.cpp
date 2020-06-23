@@ -31,8 +31,8 @@ void GLView::initializeGL ()
 void GLView::iniEscena ()
 {
     creaBuffersTerra();
-    //creaBuffersPatricio();
-    creaBuffersModel(modModel, "../models/Patricio.obj", &VAO_Model, escalaModel, centreBaseModel);
+    creaBuffersFocus();
+    creaBuffersModel(modModel, "../models/Patricio.obj", &VAO_Model, escalaModel, centreBaseModel, midesModel);
 
     centreEsc = glm::vec3 (0, 2, 0);
     radiEsc = sqrt(66+4)/2;
@@ -51,6 +51,8 @@ void GLView::iniEscena ()
     redComp = greenComp = blueComp = true;
     greyScaleComp = 0.f;
     actualitzaComponents();
+    
+    showFloor = true;
 }
 
 void GLView::iniCamera ()
@@ -60,8 +62,8 @@ void GLView::iniCamera ()
     angleX = angleY = angleZ = 0.0;
     
     fovIni = fov = float(M_PI/3.0);
-    zn = radiEsc;
-    zf = 3*radiEsc;
+    zn = 2*radiEsc-0.92*radiLlum;
+    zf = 2*radiEsc+1.2*radiLlum;
     
     left = -radiEsc;
     right = radiEsc;
@@ -91,24 +93,27 @@ void GLView::paintGL ()
     
     // Esborrem el frame-buffer i el depth-buffer
     glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-    //--------------------------------------------------------
-    // Activem el VAO per a pintar el terra
-    glBindVertexArray (VAO_Terra);  
-    // pintem terra
-    modelTransformTerra ();
-    glDrawArrays(GL_TRIANGLES, 0, 12);
-
-    //--------------------------------------------------------
-    // Activem el VAO per a pintar el Patricio
-    //glBindVertexArray (VAO_Pat);
-    // pintem el Patricio
-    //modelTransformPatricio();
-    //glDrawArrays(GL_TRIANGLES, 0, patModel.faces().size()*3);
     
-    // Activem el VAO per a pintar el Patricio
+    if (showFloor) {
+        //--------------------------------------------------------
+        // Activem el VAO per a pintar el terra
+        glBindVertexArray (VAO_Terra);  
+        // pintem terra
+        modelTransformTerra ();
+        glDrawArrays(GL_TRIANGLES, 0, 12);
+    }
+    
+
+    //--------------------------------------------------------
+    // Activem el VAO per a pintar el Focus
+    glBindVertexArray (VAO_Focus);
+    // pintem el Focus
+    modelTransformFocus();
+    glDrawArrays(GL_TRIANGLES, 0, focusModel.faces().size()*3);
+    
+    // Activem el VAO per a pintar el Model
     glBindVertexArray (VAO_Model);
-    // pintem el Patricio
+    // pintem el Model
     modelTransformModel();
     glDrawArrays(GL_TRIANGLES, 0, modModel.faces().size()*3);
     
@@ -148,16 +153,19 @@ void GLView::modelTransformTerra ()
     glUniformMatrix3fv (normalMatLoc, 1, GL_FALSE, &Normal[0][0]);
 }
 
-void GLView::modelTransformPatricio ()
+void GLView::modelTransformFocus ()
 {
     // Codi per a la TG necessària
-    glm::mat4 patTG = glm::mat4(1.0f);
-    patTG = glm::scale(patTG, glm::vec3(4, 4, 4));
-    patTG = glm::scale(patTG, glm::vec3(escalaPat, escalaPat, escalaPat));
-    patTG = glm::translate(patTG, -centreBasePat);
-    glUniformMatrix4fv(transLoc, 1, GL_FALSE, &patTG[0][0]);
+    glm::mat4 focusTG = glm::inverse(View)*llumTG;
+    focusTG = glm::translate(focusTG, glm::vec3(0,0,radiLlum*.03f));
+    focusTG = glm::rotate(focusTG, float(-M_PI)/2, glm::vec3(0, 0, 1));
+    focusTG = glm::rotate(focusTG, float(-M_PI)/2, glm::vec3(0, 1, 0));
+    focusTG = glm::translate(focusTG, glm::vec3(0, -midesFocus.y/2, 0));
+    focusTG = glm::scale(focusTG, glm::vec3(escalaFocus, escalaFocus, escalaFocus));
+    focusTG = glm::translate(focusTG, -centreBaseFocus);
+    glUniformMatrix4fv(transLoc, 1, GL_FALSE, &focusTG[0][0]);
     
-    glm::mat3 Normal = glm::inverse(glm::transpose(glm::mat3(View*patTG)));
+    glm::mat3 Normal = glm::inverse(glm::transpose(glm::mat3(View*focusTG)));
     glUniformMatrix3fv (normalMatLoc, 1, GL_FALSE, &Normal[0][0]);
 }
 
@@ -209,7 +217,7 @@ void GLView::selectFile() {
     
     makeCurrent();
     
-    creaBuffersModel(modModel, fileName.toLatin1().constData(), &VAO_Model, escalaModel, centreBaseModel);
+    creaBuffersModel(modModel, fileName.toLatin1().constData(), &VAO_Model, escalaModel, centreBaseModel, midesModel);
     centerCamZ();
     
     update();
@@ -320,17 +328,33 @@ void GLView::actualitzaColorLlum() {
 }
 
 void GLView::actualitzaPosLlum() {
-    glm::mat4 llumTG;
-    
     llumTG = glm::translate(glm::mat4(1.f), glm::vec3(0, 0, -2*radiEsc));
-    llumTG = glm::rotate(llumTG, -angleLlumX, glm::vec3(1, 0, 0));
     llumTG = glm::rotate(llumTG, angleLlumY, glm::vec3(0, 1, 0));
+    llumTG = glm::rotate(llumTG, -angleLlumX, glm::vec3(1, 0, 0));
     llumTG = glm::translate(llumTG, glm::vec3(0,0,radiLlum));
     
     glm::vec4 llum(0,0,0,1);
     llum = llumTG*llum;
     
     glUniform4fv (posFocusLoc, 1, &llum[0]);
+}
+
+void GLView::setDarkBackground() {
+    makeCurrent();
+    glClearColor(0.0,0.1,0.1,1.0);
+    update();
+}
+
+void GLView::setLightBackground() {
+    makeCurrent();
+    glClearColor(0.7,1.0,1.0,1.0);
+    update();
+}
+
+void GLView::setShowFloor(bool b) {
+    makeCurrent();
+    showFloor = b;
+    update();
 }
 
 void GLView::setRedComp(bool b) {
@@ -391,12 +415,24 @@ void GLView::keyPressEvent(QKeyEvent* event)  // Cal modificar aquesta funció..
 {
     makeCurrent();
     switch (event->key()) {
+        case Qt::Key_P: {
+            orthogonal = !orthogonal;
+            projectTransform();
+            if (orthogonal) {
+                emit toggleOrtho();
+            } else {
+                emit togglePerspective();
+            }
+            break;
+        }
         case Qt::Key_L: {
-            glClearColor(0.7,1.0,1.0,1.0);
+            setLightBackground();
+            emit toggleLightBack();
             break;
         }
         case Qt::Key_D: {
-            glClearColor(0.0,0.1,0.1,1.0);
+            setDarkBackground();
+            emit toggleDarkBack();
             break;
         }
         case Qt::Key_X: {
@@ -409,6 +445,29 @@ void GLView::keyPressEvent(QKeyEvent* event)  // Cal modificar aquesta funció..
         }
         case Qt::Key_Z: {
             centerCamZ();
+            break;
+        }
+        case Qt::Key_F: {
+            showFloor = !showFloor;
+            emit signalShowFloor(showFloor);
+            break;
+        }
+        case Qt::Key_R: {
+            redComp = !redComp;
+            actualitzaComponents();
+            emit signalRedComp(redComp);
+            break;
+        }
+        case Qt::Key_G: {
+            greenComp = !greenComp;
+            actualitzaComponents();
+            emit signalGreenComp(greenComp);
+            break;
+        }
+        case Qt::Key_B: {
+            blueComp = !blueComp;
+            actualitzaComponents();
+            emit signalBlueComp(blueComp);
             break;
         }
         default: event->ignore(); break;
@@ -455,7 +514,7 @@ void GLView::mouseMoveEvent(QMouseEvent *e)
     update ();
 }
 
-void GLView::calculaCapsaModel (Model &m, float &escala, glm::vec3 &centreBase)
+void GLView::calculaCapsaModel (Model &m, float &escala, glm::vec3 &centreBase, glm::vec3 &scaledSizes)
 {
     // Càlcul capsa contenidora i valors transformacions inicials
     float minx, miny, minz, maxx, maxy, maxz;
@@ -489,15 +548,19 @@ void GLView::calculaCapsaModel (Model &m, float &escala, glm::vec3 &centreBase)
     centreBase[0] = (minx+maxx)/2.0;
     centreBase[1] = miny;
     centreBase[2] = (minz+maxz)/2.0;
+    
+    scaledSizes[0] = (maxx-minx)*escala;
+    scaledSizes[1] = (maxy-miny)*escala;
+    scaledSizes[2] = (maxz-minz)*escala;
 }
 
-void GLView::creaBuffersPatricio(){
-    creaBuffersModel(patModel, "../models/Patricio.obj", &VAO_Pat, escalaPat, centreBasePat);
+void GLView::creaBuffersFocus(){
+    creaBuffersModel(focusModel, "../models/focus.obj", &VAO_Focus, escalaFocus, centreBaseFocus, midesFocus);
 }
 
 void GLView::creaBuffersModel(Model &model, const char *fileName,
 				  GLuint *VAO,  float &escala,
-				  glm::vec3 &centreBase)
+				  glm::vec3 &centreBase, glm::vec3 &scaledSizes)
 {
     // Carreguem el model de l'OBJ - Atenció! Abans de crear els buffers!
     model.load(fileName);
@@ -505,7 +568,7 @@ void GLView::creaBuffersModel(Model &model, const char *fileName,
     std::cout<<"creantBufferModel  "<<fileName<<std::endl;
 
     // Calculem la capsa contenidora del model
-    calculaCapsaModel(model, escala, centreBase);
+    calculaCapsaModel(model, escala, centreBase, scaledSizes);
     
     // Creació del Vertex Array Object del model
     glGenVertexArrays(1, VAO);

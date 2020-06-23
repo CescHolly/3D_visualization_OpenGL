@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>965</width>
-    <height>700</height>
+    <width>1155</width>
+    <height>825</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,7 +17,7 @@
    <iconset>
     <normaloff>../../../../../AndroidStudioProjects/circular/android/android/assets/images-ui/logo.png</normaloff>../../../../../AndroidStudioProjects/circular/android/android/assets/images-ui/logo.png</iconset>
   </property>
-  <layout class="QHBoxLayout" name="horizontalLayout_6">
+  <layout class="QHBoxLayout" name="horizontalLayout_20">
    <item>
     <widget class="GLView" name="widget" native="true">
      <property name="sizePolicy">
@@ -118,50 +118,7 @@
             </widget>
            </item>
            <item>
-            <layout class="QHBoxLayout" name="horizontalLayout">
-             <item>
-              <spacer name="horizontalSpacer_2">
-               <property name="orientation">
-                <enum>Qt::Horizontal</enum>
-               </property>
-               <property name="sizeType">
-                <enum>QSizePolicy::Minimum</enum>
-               </property>
-               <property name="sizeHint" stdset="0">
-                <size>
-                 <width>40</width>
-                 <height>20</height>
-                </size>
-               </property>
-              </spacer>
-             </item>
-             <item>
-              <widget class="QRadioButton" name="radioButton">
-               <property name="text">
-                <string>Perspective</string>
-               </property>
-               <property name="checked">
-                <bool>true</bool>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <spacer name="horizontalSpacer_3">
-               <property name="orientation">
-                <enum>Qt::Horizontal</enum>
-               </property>
-               <property name="sizeType">
-                <enum>QSizePolicy::Minimum</enum>
-               </property>
-               <property name="sizeHint" stdset="0">
-                <size>
-                 <width>40</width>
-                 <height>20</height>
-                </size>
-               </property>
-              </spacer>
-             </item>
-            </layout>
+            <layout class="QHBoxLayout" name="horizontalLayout"/>
            </item>
            <item>
             <layout class="QHBoxLayout" name="horizontalLayout_2">
@@ -182,11 +139,25 @@
               </spacer>
              </item>
              <item>
-              <widget class="QRadioButton" name="radioButton_2">
-               <property name="text">
-                <string>Orthogonal</string>
-               </property>
-              </widget>
+              <layout class="QVBoxLayout" name="verticalLayout_11">
+               <item>
+                <widget class="QRadioButton" name="radioButton_5">
+                 <property name="text">
+                  <string>Perspective</string>
+                 </property>
+                 <property name="checked">
+                  <bool>true</bool>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QRadioButton" name="radioButton_6">
+                 <property name="text">
+                  <string>Orthogonal</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
              </item>
              <item>
               <spacer name="horizontalSpacer_4">
@@ -685,6 +656,166 @@
           </layout>
          </item>
          <item>
+          <spacer name="verticalSpacer_6">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>17</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <layout class="QVBoxLayout" name="verticalLayout_16">
+           <item>
+            <widget class="QLabel" name="label_14">
+             <property name="text">
+              <string>Scene:</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_6">
+             <item>
+              <spacer name="horizontalSpacer_2">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeType">
+                <enum>QSizePolicy::Minimum</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item>
+              <layout class="QVBoxLayout" name="verticalLayout_15">
+               <item>
+                <widget class="QGroupBox" name="groupBox">
+                 <property name="title">
+                  <string/>
+                 </property>
+                 <property name="flat">
+                  <bool>true</bool>
+                 </property>
+                 <layout class="QVBoxLayout" name="verticalLayout_14">
+                  <item>
+                   <layout class="QVBoxLayout" name="verticalLayout_13">
+                    <item>
+                     <widget class="QRadioButton" name="radioButton_3">
+                      <property name="text">
+                       <string>Dark</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QRadioButton" name="radioButton_4">
+                      <property name="text">
+                       <string>Light</string>
+                      </property>
+                      <property name="checkable">
+                       <bool>true</bool>
+                      </property>
+                      <property name="checked">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <spacer name="horizontalSpacer_3">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeType">
+                <enum>QSizePolicy::Minimum</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_13">
+             <item>
+              <spacer name="horizontalSpacer_7">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeType">
+                <enum>QSizePolicy::Minimum</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_14">
+               <item>
+                <widget class="QLabel" name="label_15">
+                 <property name="text">
+                  <string>Show floor</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QCheckBox" name="checkBox_3">
+                 <property name="layoutDirection">
+                  <enum>Qt::RightToLeft</enum>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                 <property name="checked">
+                  <bool>true</bool>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <spacer name="horizontalSpacer_8">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeType">
+                <enum>QSizePolicy::Minimum</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </item>
+         <item>
           <spacer name="verticalSpacer_4">
            <property name="orientation">
             <enum>Qt::Vertical</enum>
@@ -877,8 +1008,6 @@
     </layout>
    </item>
   </layout>
-  <zorder>widget</zorder>
-  <zorder></zorder>
  </widget>
  <customwidgets>
   <customwidget>
@@ -888,6 +1017,14 @@
    <container>1</container>
    <slots>
     <signal>setZslider(int)</signal>
+    <signal>togglePerspective()</signal>
+    <signal>toggleOrtho()</signal>
+    <signal>toggleDarkBack()</signal>
+    <signal>toggleLightBack()</signal>
+    <signal>signalShowFloor(bool)</signal>
+    <signal>signalRedComp(bool)</signal>
+    <signal>signalGreenComp(bool)</signal>
+    <signal>signalBlueComp(bool)</signal>
     <slot>setProjectionPerspective()</slot>
     <slot>setProjectionOrtho()</slot>
     <slot>centerCamX()</slot>
@@ -905,6 +1042,9 @@
     <slot>setGreyScaleComp(int)</slot>
     <slot>setZoom(int)</slot>
     <slot>selectFile()</slot>
+    <slot>setShowFloor(bool)</slot>
+    <slot>setDarkBackground()</slot>
+    <slot>setLightBackground()</slot>
    </slots>
   </customwidget>
  </customwidgets>
@@ -917,12 +1057,12 @@
    <slot>close()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>820</x>
-     <y>676</y>
+     <x>1147</x>
+     <y>817</y>
     </hint>
     <hint type="destinationlabel">
-     <x>821</x>
-     <y>699</y>
+     <x>1143</x>
+     <y>737</y>
     </hint>
    </hints>
   </connection>
@@ -933,44 +1073,12 @@
    <slot>setZoom(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>685</x>
-     <y>78</y>
+     <x>892</x>
+     <y>135</y>
     </hint>
     <hint type="destinationlabel">
      <x>640</x>
      <y>78</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>radioButton</sender>
-   <signal>clicked()</signal>
-   <receiver>widget</receiver>
-   <slot>setProjectionPerspective()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>791</x>
-     <y>107</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>656</x>
-     <y>106</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>radioButton_2</sender>
-   <signal>clicked()</signal>
-   <receiver>widget</receiver>
-   <slot>setProjectionOrtho()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>886</x>
-     <y>140</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>660</x>
-     <y>139</y>
     </hint>
    </hints>
   </connection>
@@ -981,8 +1089,8 @@
    <slot>enableCamXaxis(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>832</x>
-     <y>220</y>
+     <x>1022</x>
+     <y>216</y>
     </hint>
     <hint type="destinationlabel">
      <x>657</x>
@@ -997,8 +1105,8 @@
    <slot>centerCamX()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>904</x>
-     <y>218</y>
+     <x>1094</x>
+     <y>214</y>
     </hint>
     <hint type="destinationlabel">
      <x>656</x>
@@ -1013,8 +1121,8 @@
    <slot>enableCamYaxis(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>817</x>
-     <y>253</y>
+     <x>1022</x>
+     <y>249</y>
     </hint>
     <hint type="destinationlabel">
      <x>649</x>
@@ -1029,8 +1137,8 @@
    <slot>centerCamY()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>904</x>
-     <y>251</y>
+     <x>1094</x>
+     <y>247</y>
     </hint>
     <hint type="destinationlabel">
      <x>657</x>
@@ -1045,8 +1153,8 @@
    <slot>centerCamZ()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>903</x>
-     <y>284</y>
+     <x>1093</x>
+     <y>280</y>
     </hint>
     <hint type="destinationlabel">
      <x>657</x>
@@ -1061,8 +1169,8 @@
    <slot>setCamZaxis(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>785</x>
-     <y>306</y>
+     <x>1094</x>
+     <y>307</y>
     </hint>
     <hint type="destinationlabel">
      <x>652</x>
@@ -1077,8 +1185,8 @@
    <slot>setRedLight(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>902</x>
-     <y>389</y>
+     <x>1092</x>
+     <y>377</y>
     </hint>
     <hint type="destinationlabel">
      <x>644</x>
@@ -1093,8 +1201,8 @@
    <slot>setGreenLight(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>902</x>
-     <y>419</y>
+     <x>1092</x>
+     <y>407</y>
     </hint>
     <hint type="destinationlabel">
      <x>661</x>
@@ -1109,8 +1217,8 @@
    <slot>setBlueLight(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>902</x>
-     <y>449</y>
+     <x>1092</x>
+     <y>437</y>
     </hint>
     <hint type="destinationlabel">
      <x>633</x>
@@ -1125,12 +1233,12 @@
    <slot>setRedComp(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>889</x>
-     <y>526</y>
+     <x>1079</x>
+     <y>654</y>
     </hint>
     <hint type="destinationlabel">
-     <x>549</x>
-     <y>532</y>
+     <x>581</x>
+     <y>654</y>
     </hint>
    </hints>
   </connection>
@@ -1141,12 +1249,12 @@
    <slot>setGreenComp(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>889</x>
-     <y>554</y>
+     <x>1079</x>
+     <y>682</y>
     </hint>
     <hint type="destinationlabel">
-     <x>644</x>
-     <y>562</y>
+     <x>655</x>
+     <y>682</y>
     </hint>
    </hints>
   </connection>
@@ -1157,12 +1265,12 @@
    <slot>setBlueComp(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>889</x>
-     <y>582</y>
+     <x>1079</x>
+     <y>710</y>
     </hint>
     <hint type="destinationlabel">
-     <x>653</x>
-     <y>589</y>
+     <x>664</x>
+     <y>710</y>
     </hint>
    </hints>
   </connection>
@@ -1173,12 +1281,12 @@
    <slot>setGreyScaleComp(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>794</x>
-     <y>627</y>
+     <x>1080</x>
+     <y>765</y>
     </hint>
     <hint type="destinationlabel">
-     <x>657</x>
-     <y>627</y>
+     <x>653</x>
+     <y>773</y>
     </hint>
    </hints>
   </connection>
@@ -1189,8 +1297,8 @@
    <slot>selectFile()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>688</x>
-     <y>28</y>
+     <x>1147</x>
+     <y>35</y>
     </hint>
     <hint type="destinationlabel">
      <x>646</x>
@@ -1205,8 +1313,8 @@
    <slot>setZoom(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>689</x>
-     <y>182</y>
+     <x>892</x>
+     <y>239</y>
     </hint>
     <hint type="destinationlabel">
      <x>657</x>
@@ -1225,8 +1333,216 @@
      <y>331</y>
     </hint>
     <hint type="destinationlabel">
+     <x>1094</x>
+     <y>307</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBox_3</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>widget</receiver>
+   <slot>setShowFloor(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1059</x>
+     <y>578</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>700</x>
+     <y>576</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>radioButton_3</sender>
+   <signal>clicked()</signal>
+   <receiver>widget</receiver>
+   <slot>setDarkBackground()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1003</x>
+     <y>506</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>809</x>
+     <y>500</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>radioButton_4</sender>
+   <signal>clicked()</signal>
+   <receiver>widget</receiver>
+   <slot>setLightBackground()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1008</x>
+     <y>531</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>822</x>
+     <y>522</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>radioButton_5</sender>
+   <signal>clicked()</signal>
+   <receiver>widget</receiver>
+   <slot>setProjectionPerspective()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1010</x>
+     <y>104</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>847</x>
+     <y>101</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>radioButton_6</sender>
+   <signal>clicked()</signal>
+   <receiver>widget</receiver>
+   <slot>setProjectionOrtho()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>986</x>
+     <y>134</y>
+    </hint>
+    <hint type="destinationlabel">
      <x>838</x>
-     <y>303</y>
+     <y>129</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>widget</sender>
+   <signal>togglePerspective()</signal>
+   <receiver>radioButton_5</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>716</x>
+     <y>77</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1050</x>
+     <y>101</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>widget</sender>
+   <signal>toggleOrtho()</signal>
+   <receiver>radioButton_6</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>844</x>
+     <y>153</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1049</x>
+     <y>139</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>widget</sender>
+   <signal>toggleDarkBack()</signal>
+   <receiver>radioButton_3</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>852</x>
+     <y>477</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1008</x>
+     <y>500</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>widget</sender>
+   <signal>toggleLightBack()</signal>
+   <receiver>radioButton_4</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>686</x>
+     <y>544</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1033</x>
+     <y>544</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>widget</sender>
+   <signal>signalShowFloor(bool)</signal>
+   <receiver>checkBox_3</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>851</x>
+     <y>596</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1065</x>
+     <y>577</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>widget</sender>
+   <signal>signalRedComp(bool)</signal>
+   <receiver>checkBox_4</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>844</x>
+     <y>637</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1051</x>
+     <y>637</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>widget</sender>
+   <signal>signalGreenComp(bool)</signal>
+   <receiver>checkBox_7</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>684</x>
+     <y>667</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1063</x>
+     <y>668</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>widget</sender>
+   <signal>signalBlueComp(bool)</signal>
+   <receiver>checkBox_8</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>711</x>
+     <y>701</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1065</x>
+     <y>698</y>
     </hint>
    </hints>
   </connection>
